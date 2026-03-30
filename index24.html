@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>V24 — About Page</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif; background: #f1f5f9; color: #0f172a; }
+      .wrap { width: min(980px, 100%); margin: 0 auto; padding: 22px 18px 40px; display: grid; gap: 14px; }
+      .card { border: 1px solid rgba(15,23,42,0.12); border-radius: 14px; background: #ffffff; padding: 16px; }
+      .title { margin: 0; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(15,23,42,0.7); }
+      .muted { margin: 12px 0 0; color: rgba(15,23,42,0.62); line-height: 1.7; }
+      .btn { display: inline-block; margin-top: 12px; text-decoration: none; border: 1px solid rgba(99,102,241,0.28); background: rgba(99,102,241,0.1); border-radius: 999px; padding: 10px 12px 9px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(15,23,42,0.82); }
+    </style>
+  </head>
+  <body>
+    <main class="wrap" aria-label="V24">
+      <section class="card" aria-label="About page note">
+        <p class="title">V24</p>
+        <h1 style="margin: 10px 0 0; letter-spacing: -0.02em">About Page</h1>
+        <p class="muted">
+          The about page is embedded in <b>index.html</b> as the <b>#about</b> section, including avatar, about text, skills
+          (tags + bars), timeline, and contact buttons.
+        </p>
+        <a class="btn" href="./index.html#about">Open About section</a>
+      </section>
+    </main>
+  </body>
+</html>
