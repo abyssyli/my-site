@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>V20 — Visual Consistency</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif; background: #f1f5f9; color: #0f172a; }
+      .wrap { width: min(980px, 100%); margin: 0 auto; padding: 22px 18px 40px; display: grid; gap: 14px; }
+      .card { border: 1px solid rgba(15,23,42,0.12); border-radius: 14px; background: #ffffff; padding: 16px; }
+      .title { margin: 0; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(15,23,42,0.7); }
+      .muted { margin: 12px 0 0; color: rgba(15,23,42,0.62); line-height: 1.7; }
+      .swatches { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+      .sw { width: 120px; border-radius: 10px; border: 1px solid rgba(15,23,42,0.12); padding: 10px; font-size: 12px; color: rgba(15,23,42,0.74); }
+      .sw i { font-style: normal; display: block; height: 12px; border-radius: 999px; margin-bottom: 8px; }
+      a { color: inherit; }
+    </style>
+  </head>
+  <body>
+    <main class="wrap" aria-label="V20 direction">
+      <section class="card" aria-label="Summary">
+        <p class="title">V20</p>
+        <h1 style="margin: 10px 0 0; letter-spacing: -0.02em">Consistent System</h1>
+        <p class="muted">
+          Standardizes radius, spacing (8px grid), paddings, and hover states across top nav, sidebar, main cards, and right
+          sidebar. Implemented in <a href="./index.html">V25</a>.
+        </p>
+        <div class="swatches" aria-label="Color system">
+          <div class="sw"><i style="background: #1e293b"></i>#1e293b</div>
+          <div class="sw"><i style="background: #f1f5f9"></i>#f1f5f9</div>
+          <div class="sw"><i style="background: #6366f1"></i>#6366f1</div>
+          <div class="sw"><i style="background: #f59e0b"></i>#f59e0b</div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
