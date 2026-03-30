@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>V1 — Classic 3-Column Blog</title>
+    <style>
+      :root {
+        --bg: #f6f7fb;
+        --paper: #ffffff;
+        --ink: #141a26;
+        --muted: #5a6577;
+        --line: rgba(20, 26, 38, 0.12);
+        --accent: #3a6ee8;
+        --r: 12px;
+        --gap: 16px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: linear-gradient(180deg, var(--bg), #ffffff);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: geometricPrecision;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.9);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .topbar-inner {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+        padding: 14px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+      }
+
+      .brand b {
+        font-size: 14px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .brand span {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .nav {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .nav a {
+        font-size: 13px;
+        color: var(--muted);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 2px;
+      }
+
+      .nav a:hover {
+        color: var(--ink);
+        border-bottom-color: rgba(58, 110, 232, 0.35);
+      }
+
+      .page {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+        padding: 20px 18px 28px;
+        display: grid;
+        grid-template-columns: 280px 1fr 280px;
+        gap: var(--gap);
+        align-items: start;
+      }
+
+      .card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: var(--r);
+        padding: 16px 16px 14px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .title {
+        margin: 0;
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(20, 26, 38, 0.78);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .title::after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(90deg, var(--line), transparent);
+      }
+
+      .avatar {
+        width: 62px;
+        height: 62px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: linear-gradient(135deg, rgba(58, 110, 232, 0.18), rgba(255, 255, 255, 0.9));
+      }
+
+      .author h1 {
+        margin: 0;
+        font-size: 20px;
+        letter-spacing: -0.02em;
+      }
+
+      .author p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .links {
+        display: grid;
+        gap: 10px;
+      }
+
+      .links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 13px;
+        border-bottom: 1px solid rgba(20, 26, 38, 0.18);
+        width: fit-content;
+        padding-bottom: 2px;
+      }
+
+      .links a:hover {
+        color: var(--ink);
+        border-bottom-color: rgba(58, 110, 232, 0.35);
+      }
+
+      .posts {
+        display: grid;
+        gap: 12px;
+      }
+
+      .post {
+        border: 1px solid var(--line);
+        border-radius: var(--r);
+        padding: 14px 14px 12px;
+        background: rgba(255, 255, 255, 0.9);
+        display: grid;
+        gap: 6px;
+      }
+
+      .post h2 {
+        margin: 0;
+        font-size: 16px;
+        letter-spacing: -0.01em;
+      }
+
+      .meta {
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(20, 26, 38, 0.55);
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: baseline;
+      }
+
+      .post p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.75;
+      }
+
+      .list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+
+      .li {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: baseline;
+        flex-wrap: wrap;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .chiprow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .chip {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 8px 10px 7px;
+        font-size: 12px;
+        color: rgba(20, 26, 38, 0.76);
+        background: rgba(246, 247, 251, 0.7);
+      }
+
+      footer {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+        padding: 18px 18px 32px;
+        color: rgba(20, 26, 38, 0.5);
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar" aria-label="Top navigation">
+      <div class="topbar-inner">
+        <div class="brand" aria-label="Brand">
+          <b>Avery Blog</b>
+          <span>Notes on work and life</span>
+        </div>
+        <nav class="nav" aria-label="Primary links">
+          <a href="#">Home</a>
+          <a href="#">Blog</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page" aria-label="Classic blog layout">
+      <aside class="card" aria-label="Left sidebar">
+        <h2 class="title">Author</h2>
+        <div class="avatar" aria-hidden="true"></div>
+        <div class="author">
+          <h1>Avery Lin</h1>
+          <p>Writing about product thinking, design systems, and simple habits that scale.</p>
+        </div>
+        <div class="links" aria-label="Social links">
+          <a href="https://example.com" target="_blank" rel="noreferrer">Portfolio</a>
+          <a href="https://example.com" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="mailto:hello@example.com">Email</a>
+        </div>
+      </aside>
+
+      <section class="card" aria-label="Main content">
+        <h2 class="title">Latest Posts</h2>
+        <div class="posts" aria-label="Post list">
+          <article class="post">
+            <div class="meta"><span>2026-03-30</span><span>Systems</span></div>
+            <h2>How to keep a design system small</h2>
+            <p>Principles for tokens, components, and documentation that stay readable as teams grow.</p>
+          </article>
+          <article class="post">
+            <div class="meta"><span>2026-03-18</span><span>Writing</span></div>
+            <h2>Notes on clear technical writing</h2>
+            <p>Short structure, consistent terminology, and a few rules that reduce misunderstanding.</p>
+          </article>
+          <article class="post">
+            <div class="meta"><span>2026-02-26</span><span>Work</span></div>
+            <h2>Weekly review as a delivery tool</h2>
+            <p>A small ritual to keep priorities aligned and outputs measurable without stress.</p>
+          </article>
+        </div>
+      </section>
+
+      <aside class="card" aria-label="Right sidebar">
+        <h2 class="title">Browse</h2>
+        <div aria-label="Categories">
+          <div class="meta" style="margin-bottom: 10px"><span>Categories</span></div>
+          <ul class="list">
+            <li class="li"><span>Design</span><span>12</span></li>
+            <li class="li"><span>Engineering</span><span>9</span></li>
+            <li class="li"><span>Product</span><span>7</span></li>
+          </ul>
+        </div>
+        <div aria-label="Tags">
+          <div class="meta" style="margin-top: 10px; margin-bottom: 10px"><span>Tags</span></div>
+          <div class="chiprow" aria-label="Tag chips">
+            <span class="chip">Typography</span>
+            <span class="chip">Accessibility</span>
+            <span class="chip">Process</span>
+            <span class="chip">Tools</span>
+          </div>
+        </div>
+        <div aria-label="Recent posts">
+          <div class="meta" style="margin-top: 10px; margin-bottom: 10px"><span>Recent</span></div>
+          <ul class="list">
+            <li class="li"><span>Shaping a reading flow</span><span>Mar</span></li>
+            <li class="li"><span>Better checklists</span><span>Feb</span></li>
+            <li class="li"><span>Small systems</span><span>Jan</span></li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+
+    <footer aria-label="Footer">© 2026 Avery Blog. All rights reserved.</footer>
+  </body>
+</html>
