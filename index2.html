@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>V2 — Editorial Magazine Blog</title>
+    <style>
+      :root {
+        --paper: #ffffff;
+        --ink: #0f0f12;
+        --muted: #5a5a64;
+        --red: #d1192a;
+        --line: rgba(15, 15, 18, 0.14);
+        --soft: rgba(15, 15, 18, 0.06);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", Times, serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: geometricPrecision;
+      }
+
+      .topbar {
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .topbar-inner {
+        width: min(1200px, 100%);
+        margin: 0 auto;
+        padding: 16px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+      }
+
+      .logo b {
+        font-size: 14px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .logo span {
+        color: var(--red);
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, Helvetica, sans-serif;
+      }
+
+      .nav {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .nav a {
+        color: rgba(15, 15, 18, 0.72);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 2px;
+      }
+
+      .nav a:hover {
+        color: var(--ink);
+        border-bottom-color: rgba(209, 25, 42, 0.6);
+      }
+
+      .page {
+        width: min(1200px, 100%);
+        margin: 0 auto;
+        padding: 22px 18px 40px;
+        display: grid;
+        grid-template-columns: 260px 1fr 260px;
+        gap: 18px;
+        align-items: start;
+      }
+
+      .sidebar {
+        border: 1px solid var(--line);
+        padding: 16px 16px 14px;
+      }
+
+      .sidebar h2 {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(15, 15, 18, 0.72);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .sidebar h2::after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(90deg, rgba(209, 25, 42, 0.35), transparent);
+      }
+
+      .avatar {
+        width: 84px;
+        height: 84px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: radial-gradient(circle at 35% 25%, rgba(209, 25, 42, 0.18), transparent 58%),
+          linear-gradient(180deg, #ffffff, #f7f7f7);
+        margin-top: 14px;
+      }
+
+      .bio {
+        margin: 12px 0 0;
+        color: rgba(15, 15, 18, 0.72);
+        line-height: 1.75;
+        font-size: 14px;
+      }
+
+      .links {
+        margin-top: 12px;
+        display: grid;
+        gap: 10px;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .links a {
+        color: rgba(15, 15, 18, 0.72);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(209, 25, 42, 0.25);
+        width: fit-content;
+        padding-bottom: 2px;
+      }
+
+      .links a:hover {
+        border-bottom-color: rgba(209, 25, 42, 0.65);
+        color: rgba(15, 15, 18, 0.92);
+      }
+
+      .main {
+        display: grid;
+        gap: 16px;
+      }
+
+      .hero {
+        border: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 0;
+        background: linear-gradient(180deg, #ffffff, #fafafa);
+      }
+
+      .hero-left {
+        padding: 18px 18px 16px;
+        border-right: 1px solid var(--line);
+      }
+
+      .kicker {
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--red);
+      }
+
+      .hero h1 {
+        margin: 10px 0 0;
+        font-size: 32px;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+      }
+
+      .hero p {
+        margin: 12px 0 0;
+        color: rgba(15, 15, 18, 0.72);
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
+      .hero-right {
+        padding: 18px 18px 16px;
+        display: grid;
+        gap: 10px;
+        align-content: start;
+      }
+
+      .hero-meta {
+        border-top: 1px solid var(--line);
+        padding-top: 12px;
+        display: grid;
+        gap: 8px;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(15, 15, 18, 0.64);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .post {
+        border: 1px solid var(--line);
+        padding: 14px 14px 12px;
+        background: rgba(255, 255, 255, 0.9);
+        display: grid;
+        gap: 6px;
+      }
+
+      .post .top {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: baseline;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(15, 15, 18, 0.6);
+      }
+
+      .post h3 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+      }
+
+      .post p {
+        margin: 0;
+        color: rgba(15, 15, 18, 0.72);
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .tag {
+        border: 1px solid rgba(15, 15, 18, 0.14);
+        background: var(--soft);
+        padding: 8px 10px 7px;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(15, 15, 18, 0.72);
+      }
+
+      @media (max-width: 1040px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-left {
+          border-right: none;
+          border-bottom: 1px solid var(--line);
+        }
+      }
+
+      @media (max-width: 740px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar" aria-label="Top navigation">
+      <div class="topbar-inner">
+        <div class="logo" aria-label="Logo">
+          <b>Editorial Blog</b>
+          <span>Issue 07</span>
+        </div>
+        <nav class="nav" aria-label="Menu">
+          <a href="#">Home</a>
+          <a href="#">Stories</a>
+          <a href="#">Essays</a>
+          <a href="#">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page" aria-label="Editorial magazine blog layout">
+      <aside class="sidebar" aria-label="Left sidebar">
+        <h2>Author</h2>
+        <div class="avatar" aria-hidden="true"></div>
+        <p class="bio">
+          A short editorial bio. Writing about craft, clarity, and the quiet decisions that shape reading.
+        </p>
+        <div class="links" aria-label="Links">
+          <a href="https://example.com" target="_blank" rel="noreferrer">Portfolio</a>
+          <a href="https://example.com" target="_blank" rel="noreferrer">Newsletter</a>
+          <a href="mailto:hello@example.com">Email</a>
+        </div>
+      </aside>
+
+      <section class="main" aria-label="Main">
+        <section class="hero" aria-label="Featured post">
+          <div class="hero-left">
+            <div class="kicker">Featured</div>
+            <h1>Design for reading: the power of restraint</h1>
+            <p>
+              A magazine-first approach to web pages: hierarchy, whitespace, and a rhythm that keeps the reader moving.
+            </p>
+            <div class="hero-meta" aria-label="Featured meta">
+              <div>March 2026</div>
+              <div>8 min read</div>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="kicker">Notes</div>
+            <p style="margin: 0; color: rgba(15, 15, 18, 0.72); font-size: 14px; line-height: 1.75">
+              An asymmetric grid and a disciplined palette. Let typography lead.
+            </p>
+            <div class="tags" aria-label="Trending tags">
+              <span class="tag">Typography</span>
+              <span class="tag">Layout</span>
+              <span class="tag">Editing</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="grid" aria-label="Post grid">
+          <article class="post">
+            <div class="top"><span>2026-03-22</span><span>Essay</span></div>
+            <h3>The quiet grid</h3>
+            <p>How structure can feel invisible yet decisive.</p>
+          </article>
+          <article class="post">
+            <div class="top"><span>2026-03-12</span><span>Story</span></div>
+            <h3>Contrast that respects</h3>
+            <p>Black, white, and a single red for emphasis.</p>
+          </article>
+          <article class="post">
+            <div class="top"><span>2026-02-28</span><span>Note</span></div>
+            <h3>On headlines</h3>
+            <p>Serif weight and spacing that carry mood.</p>
+          </article>
+          <article class="post">
+            <div class="top"><span>2026-02-10</span><span>Essay</span></div>
+            <h3>Margins as meaning</h3>
+            <p>Whitespace is not empty; it is pacing.</p>
+          </article>
+        </section>
+      </section>
+
+      <aside class="sidebar" aria-label="Right sidebar">
+        <h2>Trending</h2>
+        <div class="tags" aria-label="Trending tags">
+          <span class="tag">Systems</span>
+          <span class="tag">Writing</span>
+          <span class="tag">Design</span>
+          <span class="tag">Culture</span>
+          <span class="tag">Work</span>
+        </div>
+        <div style="margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px">
+          <h2 style="margin: 0; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(15, 15, 18, 0.72)">
+            Brief
+          </h2>
+          <p style="margin: 10px 0 0; color: rgba(15, 15, 18, 0.72); font-size: 14px; line-height: 1.75">
+            A compact list of stories designed to read like a magazine spread.
+          </p>
+        </div>
+      </aside>
+    </main>
+  </body>
+</html>
