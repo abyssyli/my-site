@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>V21 — Responsive Breakpoints</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif; background: #f1f5f9; color: #0f172a; }
+      .wrap { width: min(980px, 100%); margin: 0 auto; padding: 22px 18px 40px; display: grid; gap: 14px; }
+      .card { border: 1px solid rgba(15,23,42,0.12); border-radius: 14px; background: #ffffff; padding: 16px; }
+      .title { margin: 0; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(15,23,42,0.7); }
+      .muted { margin: 12px 0 0; color: rgba(15,23,42,0.62); line-height: 1.7; }
+      a { color: inherit; }
+      .bp { margin-top: 12px; display: grid; gap: 10px; }
+      .bp div { padding: 12px; border-radius: 12px; border: 1px solid rgba(15,23,42,0.12); background: rgba(241,245,249,0.7); }
+    </style>
+  </head>
+  <body>
+    <main class="wrap" aria-label="V21 direction">
+      <section class="card" aria-label="Summary">
+        <p class="title">V21</p>
+        <h1 style="margin: 10px 0 0; letter-spacing: -0.02em">Responsive Rules</h1>
+        <p class="muted">
+          Below 1024px: hide right sidebar. Below 768px: sidebar collapses into a compact top bar. Post cards stack to one
+          column. These behaviors are implemented in <a href="./index.html">V25</a>.
+        </p>
+        <div class="bp" aria-label="Breakpoints">
+          <div><b>≤ 1024px</b> — Right sidebar hidden, main expands</div>
+          <div><b>≤ 768px</b> — Sidebar becomes a top bar, compact nav</div>
+          <div><b>Mobile</b> — Single-column post grid, tap-friendly spacing</div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
