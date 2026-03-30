@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>V4 — Japanese Minimal Blog</title>
+    <style>
+      :root {
+        --paper: #f6f1e8;
+        --ink: #1e1e1e;
+        --muted: rgba(30, 30, 30, 0.6);
+        --line: rgba(30, 30, 30, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: geometricPrecision;
+      }
+
+      .top {
+        padding: 18px 18px 10px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(246, 241, 232, 0.9);
+        position: sticky;
+        top: 0;
+      }
+
+      .top-inner {
+        width: min(980px, 100%);
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        align-items: baseline;
+      }
+
+      .brand {
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .nav {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .nav a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      .nav a:hover {
+        color: var(--ink);
+      }
+
+      .page {
+        width: min(980px, 100%);
+        margin: 0 auto;
+        padding: 28px 18px 40px;
+        display: grid;
+        grid-template-columns: 240px 1fr 220px;
+        gap: 20px;
+        align-items: start;
+      }
+
+      .box {
+        border: 1px solid var(--line);
+        padding: 14px 14px 12px;
+        background: rgba(255, 255, 255, 0.25);
+      }
+
+      .label {
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(30, 30, 30, 0.06);
+        margin-top: 12px;
+      }
+
+      .haiku {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.9;
+      }
+
+      .posts {
+        display: grid;
+        gap: 12px;
+      }
+
+      .post {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 0;
+        display: grid;
+        gap: 4px;
+      }
+
+      .post:last-child {
+        border-bottom: none;
+      }
+
+      .post b {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .post span {
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .list {
+        margin: 12px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+
+      .list li {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top" aria-label="Top nav">
+      <div class="top-inner">
+        <div class="brand">Japanese minimal blog</div>
+        <nav class="nav" aria-label="Links">
+          <a href="#">Home</a>
+          <a href="#">Archive</a>
+          <a href="#">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page" aria-label="Japanese minimal layout">
+      <aside class="box" aria-label="Left sidebar">
+        <p class="label">Author</p>
+        <div class="avatar" aria-hidden="true"></div>
+        <p class="haiku">Thin lines. Quiet words.<br />A page that leaves space.</p>
+        <ul class="list" aria-label="Archive links">
+          <li>Archive 2026</li>
+          <li>Archive 2025</li>
+          <li>Archive 2024</li>
+        </ul>
+      </aside>
+
+      <section class="box" aria-label="Main posts">
+        <p class="label">Posts</p>
+        <div class="posts" aria-label="Post list">
+          <div class="post"><b>Notes on calm interfaces</b><span>2026-03-30</span></div>
+          <div class="post"><b>Small habits that scale</b><span>2026-03-12</span></div>
+          <div class="post"><b>Reading-first layouts</b><span>2026-02-20</span></div>
+          <div class="post"><b>Simple constraints</b><span>2026-01-28</span></div>
+        </div>
+      </section>
+
+      <aside class="box" aria-label="Right sidebar">
+        <p class="label">Categories</p>
+        <ul class="list" aria-label="Category list">
+          <li>Work</li>
+          <li>Writing</li>
+          <li>Design</li>
+          <li>Life</li>
+        </ul>
+      </aside>
+    </main>
+  </body>
+</html>
