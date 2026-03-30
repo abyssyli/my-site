@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>V5 — Vintage Newspaper Blog</title>
+    <style>
+      :root {
+        --paper: #efe6d2;
+        --ink: #1b1b1b;
+        --muted: rgba(27, 27, 27, 0.65);
+        --line: rgba(27, 27, 27, 0.22);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: radial-gradient(900px 520px at 18% 14%, rgba(0, 0, 0, 0.06), transparent 58%),
+          repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.02) 0 1px, transparent 1px 9px),
+          linear-gradient(180deg, var(--paper), #f6f0e0);
+        color: var(--ink);
+        font-family: "Times New Roman", Times, serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: geometricPrecision;
+      }
+
+      .masthead {
+        width: min(1200px, 100%);
+        margin: 0 auto;
+        padding: 18px 18px 14px;
+        border-bottom: 2px solid var(--ink);
+        display: grid;
+        gap: 10px;
+      }
+
+      .masthead .top {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(27, 27, 27, 0.75);
+      }
+
+      .masthead h1 {
+        margin: 0;
+        font-size: 40px;
+        letter-spacing: 0.02em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .page {
+        width: min(1200px, 100%);
+        margin: 0 auto;
+        padding: 18px;
+        display: grid;
+        grid-template-columns: 260px 1fr 260px;
+        gap: 18px;
+        align-items: start;
+      }
+
+      .box {
+        border: 1px solid var(--line);
+        padding: 14px 14px 12px;
+        background: rgba(255, 255, 255, 0.28);
+      }
+
+      .label {
+        margin: 0;
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(27, 27, 27, 0.75);
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 10px;
+      }
+
+      .oval {
+        width: 120px;
+        height: 150px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(0, 0, 0, 0.06);
+        margin-top: 12px;
+      }
+
+      .text {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.85;
+      }
+
+      .columns {
+        column-count: 2;
+        column-gap: 18px;
+        margin-top: 12px;
+      }
+
+      .article {
+        break-inside: avoid;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+      }
+
+      .article h2 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.2;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+      }
+
+      .meta {
+        margin: 8px 0 0;
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(27, 27, 27, 0.65);
+      }
+
+      .article p {
+        margin: 10px 0 0;
+        color: rgba(27, 27, 27, 0.72);
+        font-size: 14px;
+        line-height: 1.85;
+      }
+
+      .list {
+        margin: 12px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 1040px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+
+        .columns {
+          column-count: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="masthead" aria-label="Masthead">
+      <div class="top">
+        <div>Issue · 2026-03</div>
+        <div>City edition</div>
+      </div>
+      <h1>The Avery Times</h1>
+      <div class="top">
+        <div>Personal blog broadsheet</div>
+        <div>Printed for reading</div>
+      </div>
+    </header>
+
+    <main class="page" aria-label="Newspaper layout">
+      <aside class="box" aria-label="Left sidebar">
+        <p class="label">About the author</p>
+        <div class="oval" aria-hidden="true"></div>
+        <p class="text">
+          A vintage blog layout with a broadsheet rhythm: tight columns, clear headlines, and an aged paper texture built
+          with CSS only.
+        </p>
+      </aside>
+
+      <section class="box" aria-label="Main articles">
+        <p class="label">Latest articles</p>
+        <div class="columns" aria-label="Articles">
+          <article class="article">
+            <h2>Margins as meaning</h2>
+            <div class="meta">2026-03-30 · Column</div>
+            <p>Whitespace is not empty. It is how a reader keeps their place.</p>
+          </article>
+          <article class="article">
+            <h2>On steady craft</h2>
+            <div class="meta">2026-03-12 · Editorial</div>
+            <p>Small habits beat big motivation. Consistency builds trust.</p>
+          </article>
+          <article class="article">
+            <h2>Notes on clarity</h2>
+            <div class="meta">2026-02-22 · Brief</div>
+            <p>Write less, label more, and keep decisions visible to others.</p>
+          </article>
+          <article class="article">
+            <h2>The quiet grid</h2>
+            <div class="meta">2026-02-02 · Report</div>
+            <p>Structure supports reading even when it stays out of the spotlight.</p>
+          </article>
+        </div>
+      </section>
+
+      <aside class="box" aria-label="Right sidebar">
+        <p class="label">Latest issues</p>
+        <ul class="list" aria-label="Issues list">
+          <li>2026-03 · City edition</li>
+          <li>2026-02 · Winter edition</li>
+          <li>2026-01 · New year edition</li>
+          <li>2025-12 · Year-end edition</li>
+        </ul>
+      </aside>
+    </main>
+  </body>
+</html>
