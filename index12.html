@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>V12 — Identity-First Blog</title>
+    <style>
+      :root {
+        --paper: #fbfbf8;
+        --ink: #15202b;
+        --muted: rgba(21, 32, 43, 0.62);
+        --teal: #0f766e;
+        --line: rgba(21, 32, 43, 0.12);
+        --r: 14px;
+        --gap: 14px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: radial-gradient(900px 520px at 18% 14%, rgba(15, 118, 110, 0.14), transparent 58%),
+          linear-gradient(180deg, var(--paper), #ffffff);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: geometricPrecision;
+      }
+
+      .top {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(251, 251, 248, 0.9);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .top-inner {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+        padding: 14px 18px;
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        align-items: baseline;
+      }
+
+      .brand {
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: rgba(21, 32, 43, 0.74);
+      }
+
+      .page {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+        padding: 18px 18px 40px;
+        display: grid;
+        grid-template-columns: 320px 1fr 280px;
+        gap: var(--gap);
+        align-items: start;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: var(--r);
+        background: rgba(255, 255, 255, 0.75);
+        padding: 16px 16px 14px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .title {
+        margin: 0;
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(21, 32, 43, 0.7);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .title::after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(90deg, rgba(15, 118, 110, 0.3), transparent);
+      }
+
+      .avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 999px;
+        border: 3px solid rgba(15, 118, 110, 0.55);
+        background: radial-gradient(circle at 35% 30%, rgba(15, 118, 110, 0.22), transparent 60%),
+          rgba(255, 255, 255, 0.8);
+        box-shadow: 0 14px 32px rgba(21, 32, 43, 0.12);
+      }
+
+      .name {
+        margin: 0;
+        font-size: 22px;
+        letter-spacing: -0.02em;
+        font-weight: 800;
+      }
+
+      .role {
+        margin: 0;
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .bio {
+        margin: 0;
+        color: rgba(21, 32, 43, 0.68);
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+      }
+
+      .stat {
+        border: 1px solid rgba(21, 32, 43, 0.1);
+        border-radius: 12px;
+        background: rgba(15, 118, 110, 0.06);
+        padding: 12px;
+        display: grid;
+        gap: 4px;
+      }
+
+      .stat b {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(21, 32, 43, 0.6);
+      }
+
+      .stat span {
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .icons {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .iconbtn {
+        width: 38px;
+        height: 38px;
+        border-radius: 999px;
+        border: 1px solid rgba(21, 32, 43, 0.12);
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .posts {
+        display: grid;
+        gap: 12px;
+      }
+
+      .post {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 12px;
+        align-items: start;
+        border: 1px solid rgba(21, 32, 43, 0.1);
+        border-radius: 12px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.85);
+      }
+
+      .thumb {
+        height: 72px;
+        border-radius: 10px;
+        border: 1px solid rgba(21, 32, 43, 0.1);
+        background: linear-gradient(135deg, rgba(15, 118, 110, 0.2), rgba(255, 255, 255, 0.9));
+      }
+
+      .meta {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(21, 32, 43, 0.55);
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .post b {
+        display: block;
+        margin-top: 6px;
+        font-size: 15px;
+      }
+
+      .post p {
+        margin: 8px 0 0;
+        color: rgba(21, 32, 43, 0.64);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+
+        .post {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top" aria-label="Top nav">
+      <div class="top-inner">
+        <div class="brand">Identity-first blog</div>
+        <div class="brand">Warm white · teal</div>
+      </div>
+    </header>
+
+    <main class="page" aria-label="Identity-first layout">
+      <aside class="card" aria-label="Author hero">
+        <h2 class="title">Author</h2>
+        <div class="avatar" aria-hidden="true"></div>
+        <h1 class="name">Avery Lin</h1>
+        <p class="role">Product Writer</p>
+        <p class="bio">Author identity is the hero: big avatar, clear name, short bio, and clean social buttons.</p>
+        <div class="stats" aria-label="Stats">
+          <div class="stat"><b>Posts</b><span>36</span></div>
+          <div class="stat"><b>Categories</b><span>8</span></div>
+          <div class="stat"><b>Tags</b><span>42</span></div>
+        </div>
+        <div class="icons" aria-label="Social icons">
+          <div class="iconbtn" aria-hidden="true"></div>
+          <div class="iconbtn" aria-hidden="true"></div>
+          <div class="iconbtn" aria-hidden="true"></div>
+        </div>
+      </aside>
+
+      <section class="card" aria-label="Post list">
+        <h2 class="title">Posts</h2>
+        <div class="posts" aria-label="Posts">
+          <article class="post">
+            <div class="thumb" aria-hidden="true"></div>
+            <div>
+              <div class="meta"><span>2026-03-30</span><span>Teal</span></div>
+              <b>Clear profiles for busy readers</b>
+              <p>Thumbnails + one-line excerpts improve scanning without noise.</p>
+            </div>
+          </article>
+          <article class="post">
+            <div class="thumb" aria-hidden="true"></div>
+            <div>
+              <div class="meta"><span>2026-02-26</span><span>Teal</span></div>
+              <b>How to keep posts consistent</b>
+              <p>Stable sections, stable labels, stable rhythm.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <aside class="card" aria-label="Browse">
+        <h2 class="title">Browse</h2>
+        <p class="bio">Clean categories and recent posts stay readable next to the identity block.</p>
+      </aside>
+    </main>
+  </body>
+</html>
