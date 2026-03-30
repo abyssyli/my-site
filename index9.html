@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>V9 — Classic Layout, Dark Palette</title>
+    <style>
+      :root {
+        --bg: #1a1a2e;
+        --panel: rgba(255, 255, 255, 0.06);
+        --ink: rgba(255, 255, 255, 0.9);
+        --muted: rgba(255, 255, 255, 0.62);
+        --blue: #7aa8ff;
+        --line: rgba(122, 168, 255, 0.16);
+        --r: 12px;
+        --gap: 14px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: radial-gradient(900px 520px at 18% 14%, rgba(122, 168, 255, 0.14), transparent 60%),
+          linear-gradient(180deg, var(--bg), #0b0b16);
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: geometricPrecision;
+      }
+
+      .top {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(26, 26, 46, 0.75);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .top-inner {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+        padding: 14px 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .brand {
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .nav {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .nav a {
+        color: rgba(255, 255, 255, 0.68);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 2px;
+      }
+
+      .nav a:hover {
+        color: rgba(255, 255, 255, 0.92);
+        border-bottom-color: rgba(122, 168, 255, 0.6);
+      }
+
+      .page {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+        padding: 18px 18px 38px;
+        display: grid;
+        grid-template-columns: 280px 1fr 280px;
+        gap: var(--gap);
+        align-items: start;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: var(--r);
+        background: rgba(255, 255, 255, 0.04);
+        padding: 16px 16px 14px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .title {
+        margin: 0;
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.7);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .title::after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(90deg, rgba(122, 168, 255, 0.28), transparent);
+      }
+
+      .avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: radial-gradient(circle at 35% 30%, rgba(122, 168, 255, 0.22), transparent 60%),
+          rgba(255, 255, 255, 0.04);
+      }
+
+      .text {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .posts {
+        display: grid;
+        gap: 12px;
+      }
+
+      .post {
+        border: 1px solid rgba(122, 168, 255, 0.14);
+        border-radius: 12px;
+        padding: 14px 14px 12px;
+        background: rgba(255, 255, 255, 0.03);
+        display: grid;
+        gap: 6px;
+      }
+
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.56);
+      }
+
+      .post b {
+        font-size: 15px;
+      }
+
+      .post p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .chip {
+        border: 1px solid rgba(122, 168, 255, 0.16);
+        background: rgba(122, 168, 255, 0.06);
+        padding: 8px 10px 7px;
+        border-radius: 999px;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top" aria-label="Top nav">
+      <div class="top-inner">
+        <div class="brand">Classic blog · dark mode</div>
+        <nav class="nav" aria-label="Nav">
+          <a href="#">Home</a>
+          <a href="#">Blog</a>
+          <a href="#">Tags</a>
+          <a href="#">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page" aria-label="Dark three-column layout">
+      <aside class="card" aria-label="Left sidebar">
+        <h2 class="title">Author</h2>
+        <div class="avatar" aria-hidden="true"></div>
+        <p class="text">A simple 3-column layout with a calm charcoal background and soft blue accents.</p>
+        <div class="chips" aria-label="Social">
+          <span class="chip">GitHub</span>
+          <span class="chip">Email</span>
+          <span class="chip">RSS</span>
+        </div>
+      </aside>
+
+      <section class="card" aria-label="Main">
+        <h2 class="title">Posts</h2>
+        <div class="posts" aria-label="Post cards">
+          <article class="post">
+            <div class="meta"><span>2026-03-30</span><span>Systems</span></div>
+            <b>Make structure visible</b>
+            <p>Clear labels and consistent spacing improve every reading experience.</p>
+          </article>
+          <article class="post">
+            <div class="meta"><span>2026-03-09</span><span>Notes</span></div>
+            <b>Small improvements</b>
+            <p>Reduce friction by removing choices that do not matter.</p>
+          </article>
+        </div>
+      </section>
+
+      <aside class="card" aria-label="Right sidebar">
+        <h2 class="title">Browse</h2>
+        <div class="chips" aria-label="Categories">
+          <span class="chip">Design</span>
+          <span class="chip">Engineering</span>
+          <span class="chip">Writing</span>
+          <span class="chip">Life</span>
+        </div>
+      </aside>
+    </main>
+  </body>
+</html>
