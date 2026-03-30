@@ -3,24 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>V25 — Personal Blog</title>
+    <title>Personal Blog Iterations — Gallery (V1–V25)</title>
     <style>
       :root {
-        --dark: #1e293b;
-        --light: #f1f5f9;
-        --primary: #6366f1;
-        --accent: #f59e0b;
-        --paper: #ffffff;
-        --ink: #0f172a;
-        --muted: rgba(15, 23, 42, 0.62);
-        --line: rgba(15, 23, 42, 0.12);
-        --radius: 8px;
-        --s-1: 8px;
-        --s-2: 16px;
-        --s-3: 24px;
-        --s-4: 32px;
-        --shadow: 0 12px 30px rgba(2, 6, 23, 0.12);
-        --shadow-hover: 0 16px 44px rgba(2, 6, 23, 0.16);
+        --bg: #0b1220;
+        --panel: rgba(255, 255, 255, 0.06);
+        --panel-2: rgba(255, 255, 255, 0.08);
+        --line: rgba(255, 255, 255, 0.12);
+        --ink: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.68);
+        --muted-2: rgba(255, 255, 255, 0.5);
+        --accent: #7c3aed;
+        --accent-2: #22c55e;
+        --warn: #f59e0b;
+        --radius: 14px;
+        --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
       }
 
       * {
@@ -34,1214 +31,734 @@
 
       body {
         margin: 0;
-        background: radial-gradient(900px 520px at 18% 14%, rgba(99, 102, 241, 0.14), transparent 60%),
-          radial-gradient(860px 520px at 82% 18%, rgba(245, 158, 11, 0.12), transparent 60%),
-          linear-gradient(180deg, var(--light), #ffffff);
         color: var(--ink);
         font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
         -webkit-font-smoothing: antialiased;
         text-rendering: geometricPrecision;
+        background: radial-gradient(900px 520px at 18% 14%, rgba(124, 58, 237, 0.22), transparent 60%),
+          radial-gradient(880px 520px at 82% 18%, rgba(34, 197, 94, 0.16), transparent 60%),
+          linear-gradient(180deg, #060915, var(--bg));
       }
 
       a {
         color: inherit;
+        text-decoration: none;
       }
 
-      .shell {
-        min-height: 100%;
-        display: grid;
-        grid-template-columns: 260px 1fr;
-      }
-
-      .topnav {
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        grid-column: 1 / -1;
-        background: rgba(241, 245, 249, 0.9);
-        border-bottom: 1px solid var(--line);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-      }
-
-      .topnav-inner {
-        width: min(1240px, 100%);
+      .wrap {
+        width: min(1280px, 100%);
         margin: 0 auto;
-        padding: var(--s-2);
+        padding: 28px 18px 44px;
         display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        gap: var(--s-2);
-        align-items: center;
+        gap: 16px;
       }
 
-      .topnav-left {
-        display: flex;
-        align-items: center;
-        gap: var(--s-2);
-      }
-
-      .logo {
-        display: flex;
-        align-items: baseline;
-        gap: var(--s-1);
-        text-decoration: none;
-      }
-
-      .logo b {
-        font-size: 13px;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-      }
-
-      .logo span {
-        font-size: 12px;
-        color: var(--muted);
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-
-      .topnav-center {
-        display: flex;
-        justify-content: center;
-        gap: var(--s-2);
-        flex-wrap: wrap;
-        font-size: 12px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: rgba(15, 23, 42, 0.7);
-      }
-
-      .topnav-center a {
-        text-decoration: none;
-        border-bottom: 1px solid transparent;
-        padding-bottom: 2px;
-      }
-
-      .topnav-center a:hover {
-        border-bottom-color: rgba(99, 102, 241, 0.45);
-        color: rgba(15, 23, 42, 0.92);
-      }
-
-      .topnav-right {
-        display: flex;
-        justify-content: flex-end;
-        gap: var(--s-2);
-        align-items: center;
-      }
-
-      .search {
-        display: flex;
-        align-items: center;
-        gap: var(--s-1);
+      .top {
         border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.8);
-        border-radius: var(--radius);
-        padding: 10px 12px;
-        min-width: 260px;
-      }
-
-      .search input {
-        border: none;
-        outline: none;
-        width: 100%;
-        background: transparent;
-        font-size: 14px;
-        color: rgba(15, 23, 42, 0.82);
-      }
-
-      .badge {
-        border: 1px solid rgba(99, 102, 241, 0.28);
-        background: rgba(99, 102, 241, 0.1);
-        color: rgba(15, 23, 42, 0.82);
-        border-radius: 999px;
-        padding: 10px 12px 9px;
-        font-size: 12px;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        text-decoration: none;
-        white-space: nowrap;
-      }
-
-      .badge:hover {
-        border-color: rgba(99, 102, 241, 0.5);
-      }
-
-      .avatar-small {
-        width: 34px;
-        height: 34px;
-        border-radius: 999px;
-        border: 2px solid rgba(99, 102, 241, 0.35);
-        background: rgba(99, 102, 241, 0.12);
-      }
-
-      .sidebar {
-        position: sticky;
-        top: 68px;
-        align-self: start;
-        height: calc(100vh - 68px);
-        background: var(--dark);
-        color: rgba(241, 245, 249, 0.9);
-        display: grid;
-        grid-template-rows: auto 1fr auto;
-        padding: var(--s-2);
-        gap: var(--s-2);
-      }
-
-      .author {
-        display: grid;
-        gap: var(--s-2);
-      }
-
-      .avatar {
-        width: 120px;
-        height: 120px;
-        border-radius: 999px;
-        border: 3px solid var(--primary);
-        background: radial-gradient(circle at 35% 30%, rgba(99, 102, 241, 0.28), transparent 60%),
-          rgba(241, 245, 249, 0.06);
-        box-shadow: 0 12px 30px rgba(2, 6, 23, 0.28);
-      }
-
-      .author-name {
-        margin: 0;
-        font-size: 20px;
-        font-weight: 800;
-        letter-spacing: -0.01em;
-      }
-
-      .author-role {
-        margin: 0;
-        font-size: 13px;
-        color: rgba(241, 245, 249, 0.7);
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-
-      .author-bio {
-        margin: 0;
-        font-size: 14px;
-        line-height: 1.7;
-        color: rgba(241, 245, 249, 0.74);
-      }
-
-      .stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: var(--s-1);
-      }
-
-      .stat {
-        border: 1px solid rgba(241, 245, 249, 0.14);
-        border-radius: var(--radius);
-        background: rgba(241, 245, 249, 0.06);
-        padding: 10px;
-        display: grid;
-        gap: 4px;
-      }
-
-      .stat b {
-        font-size: 11px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: rgba(241, 245, 249, 0.62);
-      }
-
-      .stat span {
-        font-size: 13px;
-        font-weight: 800;
-      }
-
-      .side-nav {
-        display: grid;
-        gap: 10px;
-      }
-
-      .side-nav a {
-        display: grid;
-        grid-template-columns: 18px 1fr;
-        gap: 10px;
-        align-items: center;
-        padding: 10px 10px;
-        border-radius: var(--radius);
-        text-decoration: none;
-        color: rgba(241, 245, 249, 0.78);
-        border: 1px solid transparent;
-      }
-
-      .side-nav a:hover {
-        background: rgba(241, 245, 249, 0.06);
-        border-color: rgba(99, 102, 241, 0.22);
-        color: rgba(241, 245, 249, 0.92);
-      }
-
-      .ico {
-        width: 18px;
-        height: 18px;
-        display: grid;
-        place-items: center;
-        color: rgba(241, 245, 249, 0.7);
-      }
-
-      .ico svg {
-        width: 18px;
-        height: 18px;
-        display: block;
-      }
-
-      .ico path,
-      .ico line,
-      .ico circle {
-        stroke: currentColor;
-        stroke-width: 2;
-        fill: none;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-
-      .social {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-
-      .social a {
-        width: 34px;
-        height: 34px;
-        display: grid;
-        place-items: center;
-        border-radius: 999px;
-        border: 1px solid rgba(241, 245, 249, 0.16);
-        background: rgba(241, 245, 249, 0.06);
-        text-decoration: none;
-      }
-
-      .social a:hover {
-        border-color: rgba(99, 102, 241, 0.35);
-      }
-
-      .content {
-        width: min(1240px, 100%);
-        margin: 0 auto;
-        padding: var(--s-3) var(--s-2) var(--s-4);
-        display: grid;
-        grid-template-columns: 1fr 320px;
-        gap: var(--s-3);
-        align-items: start;
-      }
-
-      .main {
-        display: grid;
-        gap: var(--s-2);
-      }
-
-      .card {
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background: rgba(255, 255, 255, 0.9);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+        border-radius: calc(var(--radius) + 2px);
         box-shadow: var(--shadow);
-        padding: var(--s-2);
-        transition: box-shadow 160ms ease, transform 160ms ease, border-color 160ms ease;
-      }
-
-      .card:hover {
-        box-shadow: var(--shadow-hover);
-        border-color: rgba(99, 102, 241, 0.22);
-      }
-
-      .hero {
+        padding: 18px;
         display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: var(--s-2);
-        align-items: center;
+        gap: 12px;
       }
 
-      .hero-media {
-        height: 220px;
-        border-radius: var(--radius);
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(245, 158, 11, 0.12), rgba(255, 255, 255, 0.86));
-        border: 1px solid rgba(15, 23, 42, 0.12);
+      .kicker {
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--muted-2);
       }
 
-      .hero h1 {
+      h1 {
         margin: 0;
-        font-size: 28px;
+        font-size: 26px;
         letter-spacing: -0.03em;
         line-height: 1.15;
       }
 
-      .meta {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        align-items: baseline;
-        font-size: 12px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: rgba(15, 23, 42, 0.58);
-        margin-top: 10px;
-      }
-
-      .tag {
-        padding: 8px 10px 7px;
-        border-radius: 999px;
-        border: 1px solid rgba(99, 102, 241, 0.22);
-        background: rgba(99, 102, 241, 0.08);
-        color: rgba(15, 23, 42, 0.78);
-        font-size: 11px;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-
-      .excerpt {
-        margin: 10px 0 0;
-        color: rgba(15, 23, 42, 0.68);
-        font-size: 14px;
-        line-height: 1.7;
-      }
-
-      .post-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--s-2);
-      }
-
-      .post-card b {
-        display: block;
-        font-size: 16px;
-        letter-spacing: -0.01em;
-        margin-top: 6px;
-      }
-
-      .post-card p {
-        margin: 8px 0 0;
-        color: rgba(15, 23, 42, 0.64);
-        font-size: 13px;
-        line-height: 1.7;
-      }
-
-      .pin {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 11px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: rgba(15, 23, 42, 0.62);
-      }
-
-      .pin::before {
-        content: "";
-        width: 8px;
-        height: 8px;
-        border-radius: 999px;
-        background: rgba(245, 158, 11, 0.9);
-      }
-
-      .right {
-        display: grid;
-        gap: var(--s-2);
-      }
-
-      .side-block h3 {
+      .sub {
         margin: 0;
-        font-size: 12px;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: rgba(15, 23, 42, 0.7);
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .side-block h3::after {
-        content: "";
-        height: 1px;
-        flex: 1;
-        background: linear-gradient(90deg, rgba(15, 23, 42, 0.14), transparent);
-      }
-
-      .side-block p {
-        margin: 10px 0 0;
-        color: rgba(15, 23, 42, 0.64);
-        font-size: 14px;
+        color: var(--muted);
         line-height: 1.7;
+        max-width: 84ch;
       }
 
-      .chiprow {
+      .chips {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-top: 12px;
+        align-items: center;
       }
 
       .chip {
-        border: 1px solid rgba(15, 23, 42, 0.12);
-        background: rgba(241, 245, 249, 0.6);
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.06);
         border-radius: 999px;
-        padding: 8px 10px 7px;
+        padding: 9px 12px 8px;
         font-size: 12px;
-        color: rgba(15, 23, 42, 0.74);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.78);
+        white-space: nowrap;
       }
 
-      .mini-list {
-        margin: 12px 0 0;
-        padding: 0;
-        list-style: none;
-        display: grid;
-        gap: 10px;
-        color: rgba(15, 23, 42, 0.66);
-        font-size: 13px;
+      .chip strong {
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.92);
       }
 
-      .mini-list li {
+      .actions {
         display: flex;
-        justify-content: space-between;
-        gap: 10px;
         flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        margin-top: 6px;
       }
 
       .btn {
         display: inline-flex;
         gap: 10px;
         align-items: center;
-        text-decoration: none;
-        border-radius: var(--radius);
-        border: 1px solid rgba(99, 102, 241, 0.28);
-        background: rgba(99, 102, 241, 0.1);
-        padding: 12px 14px;
-        font-size: 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        padding: 10px 12px 9px;
+        background: rgba(255, 255, 255, 0.06);
         letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: rgba(15, 23, 42, 0.82);
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.88);
       }
 
       .btn:hover {
-        border-color: rgba(99, 102, 241, 0.5);
+        border-color: rgba(124, 58, 237, 0.55);
+        background: rgba(124, 58, 237, 0.16);
       }
 
-      .form {
+      .btn.secondary:hover {
+        border-color: rgba(34, 197, 94, 0.55);
+        background: rgba(34, 197, 94, 0.16);
+      }
+
+      .btn.warn:hover {
+        border-color: rgba(245, 158, 11, 0.6);
+        background: rgba(245, 158, 11, 0.18);
+      }
+
+      .sections {
         display: grid;
-        gap: var(--s-2);
+        gap: 14px;
       }
 
-      .field {
-        display: grid;
-        gap: 8px;
-      }
-
-      .field label {
-        font-size: 12px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: rgba(15, 23, 42, 0.62);
-      }
-
-      .field input,
-      .field select,
-      .field textarea {
+      .section {
         border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: 12px;
-        font-size: 14px;
-        background: rgba(255, 255, 255, 0.9);
-        color: rgba(15, 23, 42, 0.86);
-      }
-
-      .field textarea {
-        min-height: 220px;
-        resize: vertical;
-        line-height: 1.7;
-      }
-
-      .row-2 {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--s-2);
-      }
-
-      .preview {
-        height: 160px;
-        border-radius: var(--radius);
-        border: 1px solid var(--line);
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.06), rgba(255, 255, 255, 0.9));
-      }
-
-      .article-title {
-        margin: 0;
-        font-size: 34px;
-        letter-spacing: -0.04em;
-        line-height: 1.1;
-      }
-
-      .byline {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-top: 12px;
-        color: rgba(15, 23, 42, 0.62);
-        font-size: 13px;
-      }
-
-      .byline .avatar-mini {
-        width: 34px;
-        height: 34px;
-        border-radius: 999px;
-        border: 2px solid rgba(99, 102, 241, 0.35);
-        background: rgba(99, 102, 241, 0.12);
-      }
-
-      .cover {
-        height: 280px;
-        border-radius: var(--radius);
-        border: 1px solid var(--line);
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.22), rgba(245, 158, 11, 0.16), rgba(255, 255, 255, 0.9));
-        margin-top: var(--s-2);
-      }
-
-      .prose {
-        margin-top: var(--s-2);
-        color: rgba(15, 23, 42, 0.74);
-        line-height: 1.8;
-        font-size: 15px;
-      }
-
-      .prose h2 {
-        margin: 24px 0 10px;
-        font-size: 20px;
-        color: rgba(15, 23, 42, 0.92);
-      }
-
-      .prose p {
-        margin: 0 0 14px;
-      }
-
-      .prose blockquote {
-        margin: 16px 0;
-        padding: 12px 14px;
-        border-left: 4px solid rgba(99, 102, 241, 0.55);
-        background: rgba(241, 245, 249, 0.65);
-        border-radius: var(--radius);
-        color: rgba(15, 23, 42, 0.72);
-      }
-
-      .prose pre {
-        margin: 16px 0;
-        padding: 14px;
-        border-radius: var(--radius);
-        background: rgba(30, 41, 59, 0.92);
-        color: rgba(241, 245, 249, 0.92);
-        overflow: auto;
-        border: 1px solid rgba(241, 245, 249, 0.12);
-      }
-
-      .prose code {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        font-size: 13px;
-      }
-
-      .toc {
-        display: grid;
-        gap: 10px;
-        margin-top: 12px;
-      }
-
-      .toc a {
-        text-decoration: none;
-        color: rgba(15, 23, 42, 0.7);
-        border-bottom: 1px solid transparent;
-        padding-bottom: 2px;
-        width: fit-content;
-      }
-
-      .toc a:hover {
-        border-bottom-color: rgba(99, 102, 241, 0.45);
-        color: rgba(15, 23, 42, 0.92);
-      }
-
-      @media (max-width: 1024px) {
-        .content {
-          grid-template-columns: 1fr;
-        }
-
-        .right {
-          display: none;
-        }
-
-        .post-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .shell {
-          grid-template-columns: 1fr;
-        }
-
-        .topnav {
-          display: none;
-        }
-
-        .sidebar {
-          position: sticky;
-          top: 0;
-          height: auto;
-          grid-template-rows: auto;
-          grid-template-columns: 1fr;
-          padding: var(--s-2);
-        }
-
-        .author {
-          grid-template-columns: 52px 1fr;
-          align-items: center;
-          gap: var(--s-2);
-        }
-
-        .avatar {
-          width: 52px;
-          height: 52px;
-          border-width: 2px;
-          box-shadow: none;
-        }
-
-        .stats,
-        .author-bio {
-          display: none;
-        }
-
-        .side-nav {
-          grid-auto-flow: column;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 10px;
-        }
-
-        .side-nav a {
-          grid-template-columns: 18px;
-          justify-items: center;
-          padding: 10px;
-        }
-
-        .side-nav a span:last-child {
-          display: none;
-        }
-
-        .social {
-          display: none;
-        }
-
-        .content {
-          padding: var(--s-2);
-        }
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: calc(var(--radius) + 2px);
+        overflow: hidden;
       }
 
       .section-head {
-        margin: 0;
+        padding: 14px 16px;
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-size: 12px;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: rgba(15, 23, 42, 0.7);
+        justify-content: space-between;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.06);
+        border-bottom: 1px solid var(--line);
       }
 
-      .section-head::after {
-        content: "";
-        height: 1px;
-        flex: 1;
-        background: linear-gradient(90deg, rgba(15, 23, 42, 0.14), transparent);
+      .section-title {
+        display: grid;
+        gap: 4px;
+      }
+
+      .section-title b {
+        font-size: 13px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .section-title span {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .grid {
+        padding: 16px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 14px;
+      }
+
+      .card {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: var(--radius);
+        overflow: hidden;
+        display: grid;
       }
 
       details.card > summary {
         list-style: none;
         cursor: pointer;
         user-select: none;
-        font-size: 12px;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: rgba(15, 23, 42, 0.7);
-        display: flex;
-        align-items: center;
-        gap: 10px;
+        padding: 14px 14px 12px;
+        display: grid;
+        gap: 8px;
       }
 
       details.card > summary::-webkit-details-marker {
         display: none;
       }
 
-      details.card > summary::after {
-        content: "";
-        height: 1px;
-        flex: 1;
-        background: linear-gradient(90deg, rgba(15, 23, 42, 0.14), transparent);
+      .card-top {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
       }
 
-      .anchor {
-        scroll-margin-top: 96px;
+      .v {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.8);
       }
 
-      @media (max-width: 768px) {
-        .anchor {
-          scroll-margin-top: 18px;
+      .v i {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(124, 58, 237, 0.9);
+        box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.12);
+      }
+
+      .label {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 999px;
+        padding: 8px 10px 7px;
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .name {
+        margin: 0;
+        font-size: 16px;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+      }
+
+      .desc {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.7;
+        font-size: 13px;
+      }
+
+      .card-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0 14px 14px;
+      }
+
+      .mini {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        padding: 9px 11px 8px;
+        background: rgba(255, 255, 255, 0.04);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.84);
+      }
+
+      .mini:hover {
+        border-color: rgba(34, 197, 94, 0.55);
+        background: rgba(34, 197, 94, 0.14);
+      }
+
+      .preview {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(0, 0, 0, 0.28);
+        padding: 12px;
+      }
+
+      .frame {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        overflow: hidden;
+        background: #ffffff;
+        aspect-ratio: 16 / 10;
+        position: relative;
+      }
+
+      .frame iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1200px;
+        height: 750px;
+        transform: scale(0.25);
+        transform-origin: 0 0;
+        border: 0;
+      }
+
+      .note {
+        margin: 10px 0 0;
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 12px;
+        line-height: 1.6;
+      }
+
+      .footer {
+        margin-top: 6px;
+        color: rgba(255, 255, 255, 0.54);
+        font-size: 12px;
+        line-height: 1.7;
+      }
+
+      @media (max-width: 720px) {
+        .wrap {
+          padding: 18px 14px 34px;
+        }
+
+        h1 {
+          font-size: 22px;
+        }
+
+        .frame iframe {
+          width: 1024px;
+          height: 720px;
+          transform: scale(0.22);
         }
       }
     </style>
   </head>
   <body>
-    <div class="topnav" aria-label="Top navigation">
-      <div class="topnav-inner">
-        <div class="topnav-left" aria-label="Left">
-          <a class="logo" href="./index.html" aria-label="Logo">
-            <b>AVERY</b>
-            <span>BLOG</span>
-          </a>
+    <main class="wrap" aria-label="Gallery">
+      <header class="top" aria-label="Gallery header">
+        <div class="kicker">Single Repository · Multi-Version Gallery</div>
+        <h1>Personal Blog Iterations Gallery</h1>
+        <p class="sub">
+          A single place to view all iterations from V1 to V25. Each card links to the standalone HTML file and includes
+          an optional embedded preview.
+        </p>
+        <div class="chips" aria-label="Overview">
+          <span class="chip"><strong>25</strong> iterations</span>
+          <span class="chip">Pure HTML + CSS</span>
+          <span class="chip">No build required</span>
+          <span class="chip">Open previews on demand</span>
         </div>
-
-        <nav class="topnav-center" aria-label="Main links">
-          <a href="#home">Home</a>
-          <a href="#post">Post</a>
-          <a href="#about">About</a>
-          <a href="#write">Write</a>
-        </nav>
-
-        <div class="topnav-right" aria-label="Right">
-          <div class="search" aria-label="Search">
-            <input type="search" placeholder="Search posts..." aria-label="Search posts" />
-          </div>
-          <a class="badge" href="#write">New Post</a>
-          <div class="avatar-small" aria-hidden="true"></div>
+        <div class="actions" aria-label="Quick actions">
+          <a class="btn secondary" href="./index25.html" target="_blank" rel="noreferrer">Open V25 Snapshot</a>
+          <a class="btn warn" href="./Claude.md" target="_blank" rel="noreferrer">Open Notes</a>
         </div>
-      </div>
-    </div>
+      </header>
 
-    <div class="shell" aria-label="Layout shell">
-      <aside class="sidebar" aria-label="Left sidebar">
-        <section class="author" aria-label="Author card">
-          <div class="avatar" aria-hidden="true"></div>
-          <div>
-            <h1 class="author-name">Avery Lin</h1>
-            <p class="author-role">Writer · Builder</p>
+      <div class="sections" aria-label="Sections">
+        <section class="section" aria-label="Style exploration">
+          <div class="section-head">
+            <div class="section-title">
+              <b>V1–V16</b>
+              <span>Style exploration drafts</span>
+            </div>
+            <span class="label">Themes</span>
           </div>
-          <p class="author-bio">
-            I write about product clarity, design systems, and the habits that help teams ship calmly.
-          </p>
-          <div class="stats" aria-label="Stats">
-            <div class="stat"><b>Posts</b><span>36</span></div>
-            <div class="stat"><b>Cats</b><span>8</span></div>
-            <div class="stat"><b>Tags</b><span>42</span></div>
+          <div class="grid" aria-label="V1 to V16 grid">
+            <details class="card" aria-label="V1">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V1</span><span class="label">Theme</span></div>
+                <p class="name">Classic 3-Column Blog</p>
+                <p class="desc">Traditional blog IA with a familiar multi-column structure.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index1.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V1 preview">
+                <div class="frame"><iframe src="./index1.html" loading="lazy" title="V1 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V2">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V2</span><span class="label">Theme</span></div>
+                <p class="name">Editorial Magazine Blog</p>
+                <p class="desc">Serif typography, columns, and dividers for editorial rhythm.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index2.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V2 preview">
+                <div class="frame"><iframe src="./index2.html" loading="lazy" title="V2 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V3">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V3</span><span class="label">Theme</span></div>
+                <p class="name">Dark Hacker Blog</p>
+                <p class="desc">Terminal-like dark UI with neon accents and monospace tone.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index3.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V3 preview">
+                <div class="frame"><iframe src="./index3.html" loading="lazy" title="V3 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V4">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V4</span><span class="label">Theme</span></div>
+                <p class="name">Japanese Minimal Blog</p>
+                <p class="desc">Calm paper tone, fine lines, and restrained whitespace.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index4.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V4 preview">
+                <div class="frame"><iframe src="./index4.html" loading="lazy" title="V4 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V5">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V5</span><span class="label">Theme</span></div>
+                <p class="name">Vintage Newspaper Blog</p>
+                <p class="desc">Aged paper texture with a newspaper-like masthead structure.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index5.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V5 preview">
+                <div class="frame"><iframe src="./index5.html" loading="lazy" title="V5 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V6">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V6</span><span class="label">Theme</span></div>
+                <p class="name">Cyberpunk Neon Blog</p>
+                <p class="desc">High-contrast gradients with neon accents and sci-fi mood.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index6.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V6 preview">
+                <div class="frame"><iframe src="./index6.html" loading="lazy" title="V6 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V7">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V7</span><span class="label">Theme</span></div>
+                <p class="name">Hand-Drawn Nature Blog</p>
+                <p class="desc">Warm palette and dashed dividers for a friendly lifestyle tone.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index7.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V7 preview">
+                <div class="frame"><iframe src="./index7.html" loading="lazy" title="V7 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V8">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V8</span><span class="label">Theme</span></div>
+                <p class="name">Corporate Newsletter Blog</p>
+                <p class="desc">Newsletter-like blocks with scanning-friendly structure.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index8.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V8 preview">
+                <div class="frame"><iframe src="./index8.html" loading="lazy" title="V8 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V9">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V9</span><span class="label">Theme</span></div>
+                <p class="name">Classic Layout, Dark Palette</p>
+                <p class="desc">Classic structure with a darker theme for a steady reading feel.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index9.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V9 preview">
+                <div class="frame"><iframe src="./index9.html" loading="lazy" title="V9 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V10">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V10</span><span class="label">Theme</span></div>
+                <p class="name">Editorial Grid, Warm Palette</p>
+                <p class="desc">Grid-driven editorial layout with warmer tones and sectioning.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index10.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V10 preview">
+                <div class="frame"><iframe src="./index10.html" loading="lazy" title="V10 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V11">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V11</span><span class="label">Theme</span></div>
+                <p class="name">Hover Card Blog</p>
+                <p class="desc">Card interactions powered by CSS hover states.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index11.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V11 preview">
+                <div class="frame"><iframe src="./index11.html" loading="lazy" title="V11 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V12">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V12</span><span class="label">Theme</span></div>
+                <p class="name">Identity-First Blog</p>
+                <p class="desc">Emphasizes author identity and primary CTAs in the layout.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index12.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V12 preview">
+                <div class="frame"><iframe src="./index12.html" loading="lazy" title="V12 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V13">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V13</span><span class="label">Theme</span></div>
+                <p class="name">Card Waterfall Blog</p>
+                <p class="desc">Higher density cards to explore scanability vs readability.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index13.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V13 preview">
+                <div class="frame"><iframe src="./index13.html" loading="lazy" title="V13 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V14">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V14</span><span class="label">Theme</span></div>
+                <p class="name">Fixed Left Sidebar Blog</p>
+                <p class="desc">Validates a stable author column plus scrollable content.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index14.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V14 preview">
+                <div class="frame"><iframe src="./index14.html" loading="lazy" title="V14 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V15">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V15</span><span class="label">Theme</span></div>
+                <p class="name">Soft Gradient Blog</p>
+                <p class="desc">A softer gradient system to test perceived quality improvements.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index15.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V15 preview">
+                <div class="frame"><iframe src="./index15.html" loading="lazy" title="V15 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V16">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V16</span><span class="label">Theme</span></div>
+                <p class="name">Academic Research Blog</p>
+                <p class="desc">Academic tone exploring structure, summaries, and reading tools.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index16.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V16 preview">
+                <div class="frame"><iframe src="./index16.html" loading="lazy" title="V16 Preview"></iframe></div>
+              </div>
+            </details>
           </div>
         </section>
 
-        <nav class="side-nav" aria-label="Sidebar navigation">
-          <a href="#home">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-9.5Z" /><path d="M9 22V12h6v10" /></svg>
-            </span>
-            <span>Home</span>
-          </a>
-          <a href="#post">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M6 19V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v11" /><path d="M8 10h8M8 13h8M8 16h6" /></svg>
-            </span>
-            <span>Post</span>
-          </a>
-          <a href="#about">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4 22c2-6 6-9 8-9s6 3 8 9" /></svg>
-            </span>
-            <span>About</span>
-          </a>
-          <a href="#write">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M5 19l4-1 10-10-3-3L6 15l-1 4Z" /><path d="M14 6l3 3" /></svg>
-            </span>
-            <span>Write</span>
-          </a>
-        </nav>
-
-        <div class="social" aria-label="Social links">
-          <a href="mailto:hello@example.com" aria-label="Email">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 7l8 6 8-6" /><path d="M5 6h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z" /></svg>
-            </span>
-          </a>
-          <a href="https://example.com" target="_blank" rel="noreferrer" aria-label="Website">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M3 12h18" /><path d="M12 3c3 3 3 15 0 18" /></svg>
-            </span>
-          </a>
-          <a href="https://example.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" /><path d="M7 11v6" /><path d="M7 8h0" /><path d="M11 17v-4a3 3 0 0 1 6 0v4" /><path d="M11 11v6" /></svg>
-            </span>
-          </a>
-        </div>
-      </aside>
-
-      <main class="content" aria-label="Main content">
-        <section class="main" aria-label="Single-page blog">
-          <div id="home" class="anchor" aria-label="Home anchor"></div>
-          <article class="card hero" aria-label="Featured post">
-            <div>
-              <div class="pin">Pinned Post</div>
-              <h1>Make complex work readable</h1>
-              <div class="meta" aria-label="Featured meta">
-                <span>2026-03-30</span>
-                <span class="tag">Design Systems</span>
-                <span>8 min read</span>
+        <section class="section" aria-label="Convergence notes">
+          <div class="section-head">
+            <div class="section-title">
+              <b>V17–V21</b>
+              <span>Direction convergence</span>
+            </div>
+            <span class="label">Decisions</span>
+          </div>
+          <div class="grid" aria-label="V17 to V21 grid">
+            <details class="card" aria-label="V17">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V17</span><span class="label">Direction</span></div>
+                <p class="name">Core Direction</p>
+                <p class="desc">Locks the layout direction used by the final: identity sidebar + readable main.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index17.html" target="_blank" rel="noreferrer">Open</a>
               </div>
-              <p class="excerpt">
-                A practical guide to writing, layout, and component decisions that reduce confusion and speed up delivery.
-              </p>
-              <div style="margin-top: 16px">
-                <a class="btn" href="#post">Read the post</a>
+              <div class="preview" aria-label="V17 preview">
+                <div class="frame"><iframe src="./index17.html" loading="lazy" title="V17 Preview"></iframe></div>
               </div>
+            </details>
+
+            <details class="card" aria-label="V18">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V18</span><span class="label">Direction</span></div>
+                <p class="name">Typography Refinement</p>
+                <p class="desc">Strengthens hierarchy and introduces a featured hero pattern.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index18.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V18 preview">
+                <div class="frame"><iframe src="./index18.html" loading="lazy" title="V18 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V19">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V19</span><span class="label">Direction</span></div>
+                <p class="name">Author Brand Refinement</p>
+                <p class="desc">Polishes the author identity area to improve recognition and hierarchy.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index19.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V19 preview">
+                <div class="frame"><iframe src="./index19.html" loading="lazy" title="V19 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V20">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V20</span><span class="label">System</span></div>
+                <p class="name">Visual Consistency</p>
+                <p class="desc">Standardizes palette, spacing, radius, and hover behavior for the final system.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index20.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V20 preview">
+                <div class="frame"><iframe src="./index20.html" loading="lazy" title="V20 Preview"></iframe></div>
+              </div>
+            </details>
+
+            <details class="card" aria-label="V21">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V21</span><span class="label">System</span></div>
+                <p class="name">Responsive Breakpoints</p>
+                <p class="desc">Defines the responsive collapse strategy used in the final.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index21.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V21 preview">
+                <div class="frame"><iframe src="./index21.html" loading="lazy" title="V21 Preview"></iframe></div>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section class="section" aria-label="Module notes and final">
+          <div class="section-head">
+            <div class="section-title">
+              <b>V22–V25</b>
+              <span>Modules and final snapshot</span>
             </div>
-            <div class="hero-media" aria-hidden="true"></div>
-          </article>
+            <span class="label">Final</span>
+          </div>
+          <div class="grid" aria-label="V22 to V25 grid">
+            <details class="card" aria-label="V22">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V22</span><span class="label">Module</span></div>
+                <p class="name">Write Module</p>
+                <p class="desc">Notes for the writing and publishing entry, merged in the final page.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index22.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V22 preview">
+                <div class="frame"><iframe src="./index22.html" loading="lazy" title="V22 Preview"></iframe></div>
+              </div>
+            </details>
 
-          <section class="post-grid" aria-label="Post grid">
-            <article class="card post-card" aria-label="Post card">
-              <div class="meta"><span>2026-03-18</span><span class="tag">Writing</span><span>5 min</span></div>
-              <b>Notes on decision-ready updates</b>
-              <p>How to format progress, context, and next steps without filler.</p>
-            </article>
-            <article class="card post-card" aria-label="Post card">
-              <div class="meta"><span>2026-02-26</span><span class="tag">Process</span><span>6 min</span></div>
-              <b>Spacing as a product choice</b>
-              <p>Why a simple 8px system makes pages feel calmer and easier.</p>
-            </article>
-            <article class="card post-card" aria-label="Post card">
-              <div class="meta"><span>2026-02-08</span><span class="tag">Engineering</span><span>7 min</span></div>
-              <b>Stable UI tokens for teams</b>
-              <p>Keep naming, defaults, and exceptions predictable.</p>
-            </article>
-            <article class="card post-card" aria-label="Post card">
-              <div class="meta"><span>2026-01-22</span><span class="tag">Career</span><span>4 min</span></div>
-              <b>Work that compounds</b>
-              <p>Build reusable artifacts: docs, templates, and systems.</p>
-            </article>
-          </section>
+            <details class="card" aria-label="V23">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V23</span><span class="label">Module</span></div>
+                <p class="name">Post Module</p>
+                <p class="desc">Notes for the single post reading experience, merged in the final page.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index23.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V23 preview">
+                <div class="frame"><iframe src="./index23.html" loading="lazy" title="V23 Preview"></iframe></div>
+              </div>
+            </details>
 
-          <div id="post" class="anchor" aria-label="Post anchor"></div>
-          <h2 class="section-head" aria-label="Post section heading">Post</h2>
-          <article class="card" aria-label="Post content">
-            <h1 class="article-title" id="top">Make complex work readable</h1>
-            <div class="byline" aria-label="Byline">
-              <div class="avatar-mini" aria-hidden="true"></div>
-              <span>By Avery Lin</span>
-              <span>·</span>
-              <span>2026-03-30</span>
-              <span>·</span>
-              <span class="tag">Design Systems</span>
-            </div>
-            <div class="cover" aria-label="Cover image"></div>
+            <details class="card" aria-label="V24">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V24</span><span class="label">Module</span></div>
+                <p class="name">About Module</p>
+                <p class="desc">Notes for the author profile module, merged in the final page.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index24.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V24 preview">
+                <div class="frame"><iframe src="./index24.html" loading="lazy" title="V24 Preview"></iframe></div>
+              </div>
+            </details>
 
-            <div class="prose" aria-label="Post body">
-              <p>
-                Good writing and good layout solve the same problem: make meaning easy to find. This post collects a few
-                practical patterns that keep information readable under real constraints.
-              </p>
-
-              <h2 id="principles">Principles</h2>
-              <p>
-                Start with a stable structure: a clear title, a short summary, and consistent sections. Then make every
-                element earn its place.
-              </p>
-
-              <blockquote>
-                Clarity is not a style. It is a system of small choices that the reader can trust.
-              </blockquote>
-
-              <h2 id="structure">Structure</h2>
-              <p>
-                Use predictable spacing and repeatable patterns. Prefer fewer components that work everywhere over many
-                specialized layouts.
-              </p>
-
-              <pre><code>const rule = "Prefer repeatable patterns over special cases";</code></pre>
-
-              <h2 id="next">Next Steps</h2>
-              <p>
-                If you only change one thing, standardize your spacing scale and headings. It improves every page and
-                every future edit.
-              </p>
-            </div>
-          </article>
-
-          <div id="about" class="anchor" aria-label="About anchor"></div>
-          <h2 class="section-head" aria-label="About section heading">About</h2>
-          <section class="card" aria-label="About hero">
-            <div style="display: grid; justify-items: center; gap: 12px">
-              <div class="avatar" style="width: 180px; height: 180px" aria-hidden="true"></div>
-              <div style="text-align: center">
-                <h1 style="margin: 0; font-size: 26px; letter-spacing: -0.02em">Avery Lin</h1>
-                <p
-                  style="
-                    margin: 8px 0 0;
-                    color: rgba(15, 23, 42, 0.62);
-                    letter-spacing: 0.14em;
-                    text-transform: uppercase;
-                    font-size: 13px;
-                  "
-                >
-                  Product · Writing · Systems
+            <details class="card" open aria-label="V25">
+              <summary>
+                <div class="card-top"><span class="v"><i aria-hidden="true"></i>V25</span><span class="label">Final</span></div>
+                <p class="name">Final Snapshot</p>
+                <p class="desc">The converged final visual system and layout snapshot.</p>
+              </summary>
+              <div class="card-actions">
+                <a class="mini" href="./index25.html" target="_blank" rel="noreferrer">Open</a>
+              </div>
+              <div class="preview" aria-label="V25 preview">
+                <div class="frame"><iframe src="./index25.html" loading="lazy" title="V25 Preview"></iframe></div>
+                <p class="note">
+                  If you want the final page to be the deploy entry, set the deployment entry to index25.html or rename it
+                  to index.html.
                 </p>
               </div>
-            </div>
-          </section>
-
-          <section class="card" aria-label="About me">
-            <h3
-              style="
-                margin: 0;
-                font-size: 12px;
-                letter-spacing: 0.18em;
-                text-transform: uppercase;
-                color: rgba(15, 23, 42, 0.7);
-              "
-            >
-              About Me
-            </h3>
-            <p style="margin: 12px 0 0; color: rgba(15, 23, 42, 0.68); line-height: 1.8">
-              I work on content-heavy products where clarity matters: reporting, dashboards, and tools that teams use
-              daily. I prefer stable systems and readable UI.
-            </p>
-            <p style="margin: 12px 0 0; color: rgba(15, 23, 42, 0.68); line-height: 1.8">
-              This blog is a place for short notes: practical patterns, small decisions, and templates that remove
-              friction.
-            </p>
-            <p style="margin: 12px 0 0; color: rgba(15, 23, 42, 0.68); line-height: 1.8">
-              I believe professional work should feel calm: predictable structure, consistent naming, and feedback that
-              stays respectful.
-            </p>
-          </section>
-
-          <section class="card" aria-label="Skills">
-            <h3
-              style="
-                margin: 0;
-                font-size: 12px;
-                letter-spacing: 0.18em;
-                text-transform: uppercase;
-                color: rgba(15, 23, 42, 0.7);
-              "
-            >
-              Skills
-            </h3>
-            <div class="chiprow" aria-label="Skill tags">
-              <span class="chip">Design Systems</span>
-              <span class="chip">Information Design</span>
-              <span class="chip">Technical Writing</span>
-              <span class="chip">Accessibility</span>
-              <span class="chip">Delivery</span>
-            </div>
-            <div style="margin-top: 12px; display: grid; gap: 12px">
-              <div style="display: grid; gap: 8px">
-                <div
-                  style="
-                    display: flex;
-                    justify-content: space-between;
-                    gap: 12px;
-                    flex-wrap: wrap;
-                    color: rgba(15, 23, 42, 0.7);
-                    font-size: 12px;
-                    letter-spacing: 0.14em;
-                    text-transform: uppercase;
-                  "
-                >
-                  <span>Writing</span><span>86%</span>
-                </div>
-                <div style="height: 6px; background: rgba(15, 23, 42, 0.1); border-radius: 999px; overflow: hidden">
-                  <div style="width: 86%; height: 100%; background: rgba(99, 102, 241, 0.42)"></div>
-                </div>
-              </div>
-              <div style="display: grid; gap: 8px">
-                <div
-                  style="
-                    display: flex;
-                    justify-content: space-between;
-                    gap: 12px;
-                    flex-wrap: wrap;
-                    color: rgba(15, 23, 42, 0.7);
-                    font-size: 12px;
-                    letter-spacing: 0.14em;
-                    text-transform: uppercase;
-                  "
-                >
-                  <span>Systems</span><span>82%</span>
-                </div>
-                <div style="height: 6px; background: rgba(15, 23, 42, 0.1); border-radius: 999px; overflow: hidden">
-                  <div style="width: 82%; height: 100%; background: rgba(245, 158, 11, 0.42)"></div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section class="card" aria-label="Timeline">
-            <h3
-              style="
-                margin: 0;
-                font-size: 12px;
-                letter-spacing: 0.18em;
-                text-transform: uppercase;
-                color: rgba(15, 23, 42, 0.7);
-              "
-            >
-              Timeline
-            </h3>
-            <ul class="mini-list" aria-label="Timeline list">
-              <li><span>2024–2026 · Lead contributor</span><span>Work</span></li>
-              <li><span>2022–2024 · Specialist</span><span>Work</span></li>
-              <li><span>2018–2022 · University</span><span>Study</span></li>
-            </ul>
-          </section>
-
-          <section class="card" aria-label="Contact">
-            <h3
-              style="
-                margin: 0;
-                font-size: 12px;
-                letter-spacing: 0.18em;
-                text-transform: uppercase;
-                color: rgba(15, 23, 42, 0.7);
-              "
-            >
-              Contact
-            </h3>
-            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px">
-              <a class="btn" href="mailto:hello@example.com">Email</a>
-              <a class="btn" href="https://example.com" target="_blank" rel="noreferrer">Website</a>
-              <a class="btn" href="https://example.com" target="_blank" rel="noreferrer">LinkedIn</a>
-            </div>
-          </section>
-
-          <div id="write" class="anchor" aria-label="Write anchor"></div>
-          <h2 class="section-head" aria-label="Write section heading">Write</h2>
-          <section class="card" aria-label="Write form">
-            <h1 style="margin: 0; font-size: 22px; letter-spacing: -0.02em">Write Post</h1>
-            <p style="margin: 10px 0 0; color: rgba(15, 23, 42, 0.62); line-height: 1.7">
-              A clean editor layout that matches the rest of the blog. This is a static form for presentation only.
-            </p>
-
-            <form class="form" aria-label="Post editor form">
-              <div class="field">
-                <label for="title">Title</label>
-                <input id="title" type="text" placeholder="A clear, specific title" />
-              </div>
-
-              <div class="row-2" aria-label="Row">
-                <div class="field">
-                  <label for="category">Category</label>
-                  <select id="category">
-                    <option>Design</option>
-                    <option>Engineering</option>
-                    <option>Writing</option>
-                    <option>Career</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label for="date">Publish Date</label>
-                  <input id="date" type="date" />
-                </div>
-              </div>
-
-              <div class="row-2" aria-label="Row">
-                <div class="field">
-                  <label for="tags">Tags</label>
-                  <input id="tags" type="text" placeholder="Comma-separated tags" />
-                </div>
-                <div class="field">
-                  <label for="status">Status</label>
-                  <select id="status">
-                    <option>Draft</option>
-                    <option>Published</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="field">
-                <label for="cover-input">Cover Image URL</label>
-                <input id="cover-input" type="url" placeholder="https://..." />
-                <div class="preview" aria-label="Cover preview"></div>
-              </div>
-
-              <div class="field">
-                <label for="content">Content</label>
-                <textarea id="content" placeholder="Write with short paragraphs and clear headings..."></textarea>
-              </div>
-
-              <div style="display: flex; gap: 12px; flex-wrap: wrap">
-                <button
-                  type="button"
-                  class="btn"
-                  style="border-color: rgba(99, 102, 241, 0.45); background: rgba(99, 102, 241, 0.14)"
-                >
-                  Publish
-                </button>
-                <a
-                  class="btn"
-                  href="#home"
-                  style="border-color: rgba(15, 23, 42, 0.14); background: rgba(241, 245, 249, 0.7)"
-                  >Cancel</a
-                >
-              </div>
-            </form>
-          </section>
+            </details>
+          </div>
         </section>
+      </div>
 
-        <aside class="right" aria-label="Right sidebar">
-          <details class="card side-block" open aria-label="Home widgets">
-            <summary>Home</summary>
-            <p style="margin: 10px 0 0; color: rgba(15, 23, 42, 0.64); font-size: 14px; line-height: 1.7">
-              Short posts with high signal: systems, writing, and delivery habits.
-            </p>
-            <div class="chiprow" aria-label="Top tags" style="margin-top: 12px">
-              <span class="chip">Design</span>
-              <span class="chip">Systems</span>
-              <span class="chip">Docs</span>
-              <span class="chip">Tools</span>
-              <span class="chip">Career</span>
-              <span class="chip">Habits</span>
-            </div>
-            <ul class="mini-list" aria-label="Monthly archive" style="margin-top: 12px">
-              <li><span>2026-03</span><span>6</span></li>
-              <li><span>2026-02</span><span>5</span></li>
-              <li><span>2026-01</span><span>4</span></li>
-              <li><span>2025-12</span><span>3</span></li>
-            </ul>
-          </details>
-
-          <details class="card side-block" aria-label="Post table of contents">
-            <summary>Post Contents</summary>
-            <nav class="toc" aria-label="TOC" style="margin-top: 12px">
-              <a href="#top">Top</a>
-              <a href="#principles">Principles</a>
-              <a href="#structure">Structure</a>
-              <a href="#next">Next Steps</a>
-            </nav>
-          </details>
-
-          <details class="card side-block" aria-label="Writing tips">
-            <summary>Writing Tips</summary>
-            <ul class="mini-list" aria-label="Tips" style="margin-top: 12px">
-              <li><span>Lead with the outcome</span><span>1</span></li>
-              <li><span>Use stable headings</span><span>2</span></li>
-              <li><span>Keep paragraphs short</span><span>3</span></li>
-              <li><span>End with next steps</span><span>4</span></li>
-            </ul>
-          </details>
-
-          <details class="card side-block" aria-label="Quick facts">
-            <summary>Quick Facts</summary>
-            <ul class="mini-list" aria-label="Facts" style="margin-top: 12px">
-              <li><span>Based in</span><span>Shanghai</span></li>
-              <li><span>Focus</span><span>Clarity</span></li>
-              <li><span>Style</span><span>Calm</span></li>
-            </ul>
-          </details>
-        </aside>
-      </main>
-    </div>
+      <div class="footer" aria-label="Footer">
+        Tip: To keep the page fast, previews are inside collapsible cards. Open only what you need, or use the Open button
+        to view each version at full size.
+      </div>
+    </main>
   </body>
 </html>
