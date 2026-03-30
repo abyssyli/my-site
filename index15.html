@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>V15 — Soft Gradient Blog</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif; background: #f6f7fb; color: #111827; }
+      .hero { background: linear-gradient(135deg, #7c3aed, #ec4899); color: rgba(255,255,255,0.92); padding: 28px 18px; }
+      .hero-inner { width: min(980px, 100%); margin: 0 auto; display: grid; gap: 12px; }
+      .pill { display: inline-block; border: 1px solid rgba(255,255,255,0.35); border-radius: 999px; padding: 10px 12px 9px; letter-spacing: 0.14em; text-transform: uppercase; font-size: 12px; width: fit-content; }
+      .page { width: min(980px, 100%); margin: 0 auto; padding: 18px; display: grid; gap: 14px; }
+      .card { background: rgba(255,255,255,0.9); border: 1px solid rgba(17,24,39,0.12); border-radius: 16px; padding: 16px; box-shadow: 0 14px 34px rgba(17,24,39,0.12); }
+      .muted { color: rgba(17,24,39,0.62); line-height: 1.7; }
+      a { color: inherit; }
+    </style>
+  </head>
+  <body>
+    <header class="hero" aria-label="Gradient header">
+      <div class="hero-inner">
+        <div class="pill">V15</div>
+        <h1 style="margin: 0; letter-spacing: -0.03em">Soft Gradient Direction</h1>
+        <p style="margin: 0; opacity: 0.9; line-height: 1.7">
+          Gradient header + rounded cards + soft shadows for a modern feel.
+        </p>
+      </div>
+    </header>
+    <main class="page" aria-label="Content">
+      <section class="card" aria-label="Note">
+        <p class="muted" style="margin: 0">
+          For the complete multi-page final build with shared styles, open <a href="./index.html">index.html</a>.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
